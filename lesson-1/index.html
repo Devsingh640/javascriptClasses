@@ -7,9 +7,39 @@
     <title>Document</title>
 </head>
 <body>
-    <p id="hello">hello world</p>
+    <!-- an node can be targeted by its tag name and as a result we get an array using document.getElementsByTagName -->
+    <div id="myDiv">
+        <!-- these have same id but  first will be only targeted. -->
+        <p id="hello">hello world 1</p>
+        <p id="hello">hello world 2</p>
+        <p id="hello">hello world 3</p>
+
+        <!-- element can be manipulated by targeting an element by id in DOM -->
+        <p id="myFriend">Gaurav Kumar</p>
+    </div>
+
+    <ol id="myOl"> </ol>
+
+
+    <button id="myButton" onclick="myButtonColorChangingFunction();"> My Friends Mood</button>
     <script>
-        a = document.getElementById('hello').innerHTML = "hello dear world";
+        // you can assign multiple id's in html unless they are called, if called first one will be the one that gets targeted.
+        document.getElementById('hello').innerHTML = 'hello world 1 is changed to hello dear world because it was first';
+        
+        function myButtonColorChangingFunction(){
+            let myHtml = '';
+            let myVariable = document.getElementsByTagName('div');
+
+            document.getElementById('myFriend').innerHTML = "Gaurav Kumar is Angry";
+            document.getElementById('myFriend').style.color = "red";
+            
+            // console.log(myVariable[0].children);
+            for(i=0; i<=myVariable[0].children.length; i++){
+                myHtml = `${myHtml}<li>${myVariable[0].children[i]}</li>`;
+                // console.log(myVariable[0].children[i]);
+            }
+            document.getElementById('myOl').innerHTML = myHtml;
+        }
     </script>
 </body>
 </html>
